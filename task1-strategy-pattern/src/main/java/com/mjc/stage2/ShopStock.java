@@ -1,5 +1,6 @@
 package com.mjc.stage2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopStock {
@@ -9,5 +10,13 @@ public class ShopStock {
         this.productList = productList;
     }
 
-    // Write your code here!
+    public List<Product> executeFilteringStrategy(FilteringStrategy filteringStrategy) {
+        List<Product> filteringProducts = new ArrayList<>();
+        for (Product p: this.productList) {
+            if (filteringStrategy.filter(p)) {
+                filteringProducts.add(p);
+            }
+        }
+        return filteringProducts;
+    }
 }
